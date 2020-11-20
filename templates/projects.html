@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% block style %}
+    .body{
+    }
+    .hex .hex-content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+
+   transform: translate(-50%, -50%) rotate(90deg);
+
+   color: white;
+ }
+
+ol.even {
+  position: relative;
+  left: 5.45455rem;
+}
+
+ol.odd {
+  position: relative;
+  margin-bottom: -4.5%;
+}
+
+.hex {
+  position: relative;
+  margin: 1em auto;
+  width: 6rem;
+  height: 10.2rem;
+  background: #1e2530;
+  transform: rotate(-90deg);
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 4.61538rem;
+  transition: all 150ms ease-in-out;
+  z-index: 2;
+}
+
+.hex:before, .hex:after {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: inherit;
+  content: '';
+  z-index: -1;
+}
+
+.hex:before {
+  transform: rotate(60deg);
+}
+
+.hex:after {
+  transform: rotate(-60deg);
+}
+
+.hex:hover {
+  background: #ea7432;
+  cursor: pointer;
+}
+    .list3b {
+    padding:0;
+    list-style: none;
+    counter-reset: li;
+}
+.list3b li {
+    position: relative;
+    border-left: 4px solid #DDDDDD;
+    padding:16px 20px 16px 28px;
+    margin:12px 0 12px 80px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.list3b li:before {
+    line-height: 32px;
+    position: absolute;
+    top: 10px;
+    left:-80px;
+    width:80px;
+    text-align:center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #DDDDDD;
+    counter-increment: li;
+    content: counter(li);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.list3b li:hover:before {
+    color: #77AEDB;
+}
+.list3b li:after {
+    position: absolute;
+    top: 26px;
+    left: -40px;
+    width: 60px;
+    height: 60px;
+    border: 8px solid #3399FF;
+    border-radius: 50%;
+    content: '';
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.1);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.1);
+    transform: translateX(-50%) translateY(-50%) scale(0.1);
+    pointer-events: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.list3b li:hover:after {
+    opacity: 0.2;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(1);
+    transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+:root{
+    --height: 3em;
+    --bgr: rgb(64, 64, 64);
+}
+
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    background: var(--bgr);
+    height: calc(1 * var(--height));
+    width: calc(2 * 0.866 * var(--height));
+    box-shadow: 0.5em 0.5em 0.5em lightgrey;
+    transition: box-shadow ease 0.2s;
+    z-index: 9;
+}
+
+.btn:after,
+.btn:before{
+    content: '';
+    position: absolute;
+    transition: all ease-in-out 0.35s;
+    top: 0px; left: 0px;
+    height: calc(1 * var(--height));
+    width: calc(2 * 0.866 * var(--height));
+    background: var(--bgr);
+    opacity: 0;
+    z-index: -5;
+}
+
+.btn:hover{
+    transition: box-shadow linear 0.2s;
+    box-shadow: none;
+}
+.btn:after{
+    transform: rotate(60deg) translateX(calc(-2 * var(--height)));
+}
+
+.btn:before{
+    transform: rotate(-60deg) translateX(calc(2 * var(--height)));
+    transition-delay: 0.1s;
+}
+
+.btn:hover:after,
+.btn:hover:before{
+    content: '';
+    position: absolute;
+    top: 0px; left: 0px;
+    transition: all ease-in-out .2s;
+    height: calc(1 * var(--height));
+    width: calc(2 * 0.866 * var(--height));
+    background: var(--bgr);
+    opacity: 1;
+    z-index: -5;
+}
+
+.btn:hover:after{
+    transform: rotate(60deg) translateX(0);
+
+}
+
+.btn:hover:before{
+    transform:  rotateZ(-60deg) translateX(0px);
+    transition-delay: 0.1s;
+}
+
+.btn:active:before,
+.btn:active:after{
+    transform: rotateZ(0deg);
+}
+
+.btn:active:before{
+    transition-delay: .1s;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px; right: 0px;
+    margin: 3px;
+    font-size: 11px;
+}
+
+a{
+    text-decoration: none;
+}
+{% endblock %}
+{% block body %}
+<div class="body" style="margin-left: 10%">
+<ol class="odd">
+  <li class="hex">
+    <div class="hex-content"><a href="{% url 'projects_url' %}" style="color: white">Проекты</a></div>
+  </li>
+  <li class="hex">
+      <div class="hex-content"><a href="{% url 'employees_url' %}" style="color: white">Рабочие</a></div></li>
+    <li class="hex">
+      <div class="hex-content"><a href="{% url 'companies_url' %}" style="color: white">Компании</a></div></li>
+    <li class="hex">
+      <div class="hex-content"><a href="{% url 'logout' %}" style="color: white">Выход</a></div></li>
+</ol>
+</div>
+    {% block content %}
+        <div style="margin-top: 10%">
+        <ul class="list3b">
+            {% for project in data_p %}
+                <li><a href="{% url 'project_url' project.name %}" style="color: white">{{ project.name }}</a></li>
+            {% endfor %}
+
+</ul>
+        </div>
+
+        <div class="btn" style="margin-left: 15%"><a class="btn" href="{% url 'project_add_url' %}">Добавить</a></div>
+        {% endblock %}
+
+{% endblock %}

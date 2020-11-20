@@ -1,0 +1,13 @@
+{% extends 'projects.html' %}
+{% block content %}
+        <div style="margin-top: 10%">
+        <ul class="list3b">
+            {% for employee in data_e %}
+                <li>{{ employee.name }}</li>
+            {% endfor %}
+
+</ul>
+        </div>
+
+        <div class="btn" style="margin-left: 15%"><a class="btn" href="{% url 'employee_add_url' %}">Добавить</a></div>
+        {% endblock %}

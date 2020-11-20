@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+    background: url(https://w-dog.ru/wallpapers/13/5/329059121504256.jpg) no-repeat;
+            background-size: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    padding-top: 20px;
+}
+        {% block style %}
+{% endblock %}
+    </style>
+</head>
+<body>
+{% csrf_token%}
+{% block body %}
+{% endblock %}
+</body>
+</html>

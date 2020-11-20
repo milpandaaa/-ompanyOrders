@@ -1,0 +1,15 @@
+{% extends 'projects.html' %}
+{% block content %}
+        <div style="margin-top: 10%">
+        <ul class="list3b">
+            {% for company in data_c %}
+                <li>{{ company.name }}<br>
+                {{ company.address }}<br>
+                {{ company.number }}</li>
+            {% endfor %}
+
+</ul>
+        </div>
+
+        <div class="btn" style="margin-left: 15%"><a class="btn" href="{% url 'company_add_url' %}">Добавить</a></div>
+        {% endblock %}
